@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>osu file format</title>
+</head>
+
+<body>
+<h1>Heavily in progress</h1>
+    <p>
+examples:
+v1 & v2: doesn't exist at least on the official website
+v3: https://osu.ppy.sh/beatmapsets/1#osu/75
+v4: https://osu.ppy.sh/beatmapsets/519#osu/4178
+v5: https://osu.ppy.sh/beatmapsets/1184#osu/23467
+v6: https://osu.ppy.sh/beatmapsets/7290#osu/31526
+v7: https://osu.ppy.sh/beatmapsets/11833#osu/44907
+v8: https://osu.ppy.sh/beatmapsets/19928#osu/70050
+v9: https://osu.ppy.sh/beatmapsets/24313#osu/104229
+v10: https://osu.ppy.sh/beatmapsets/58773#osu/176514
+v11: https://osu.ppy.sh/beatmapsets/76937#osu/217017
+v12: https://osu.ppy.sh/beatmapsets/59347#osu/178706
+v13: https://osu.ppy.sh/beatmapsets/180286#osu/433299
+v14 (latest): https://osu.ppy.sh/beatmapsets/275283#osu/679226
+v128 (latest lazer): https://osu.ppy.sh/beatmapsets/2327095#osu/4988875
+    </p>
+</body>
+
+</html>
