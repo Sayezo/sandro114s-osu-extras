@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>randosu!ES</title>
+	<meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #fango {
+            margin: 20px auto;
+        }
+
+        #fango label {
+            display: inline-block;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #cajita {
+            display: none;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 250px;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 8px 15px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Perfiles random de osu de España</h1>
+
+    <p>
+        Top 2500 standard, 400 taiko, 300 catch, 2000 mania,
+        actualizado por ultima vez el 31 de octubre de 2026
+    </p>
+
+    <div id="fango">
+
+        <label>
+            <input type="checkbox" class="gay" value="osu" checked>
+            osu
+        </label>
+
+        <label>
+            <input type="checkbox" class="gay" value="taiko" checked>
+            taiko
+        </label>
+
+        <label>
+            <input type="checkbox" class="gay" value="fruits" checked>
+            catch
+        </label>
+
+        <label>
+            <input type="checkbox" class="gay" value="mania" checked>
+            mania
+        </label>
+
+    </div>
+
+    <button onclick="tetas()">
+        Generar
+    </button>
+
+    <div id="cajita">
+
+        <h2 id="nohombre"></h2>
+
+        <p id="gay"></p>
+		
+		<button onclick="des()">
+			←
+		</button>
+
+        <button onclick="openplis()">
+            Abrir el perfil
+        </button>
+
+    </div>
+
+    <p id="estado"></p>
+
+<script>
+
+let asd = "https://osu.ppy.sh/users/";
+
+let dsa = {};
+
+let elelegido = null;
+
+let boymode = {
+    osu: "osu",
+    taiko: "taiko",
+    fruits: "catch",
+    mania: "mania"
+};
+
+let prehistoria = [];
+
+fetch("osu_players.json")
+    .then(response => response.json())
+    .then(data => {
+        dsa = data;
+    });
+
+function tetas() {
+
+    let seleccionados = Array.from(
+        document.querySelectorAll(".gay:checked")
+    ).map(checkbox => checkbox.value);
+
+    let pool = [];
+
+    seleccionados.forEach(mode => {
+
+        if (dsa[mode]) {
+
+            dsa[mode].forEach(player => {
+
+                pool.push({
+                    name: player.name,
+                    id: player.id,
+                    mode: mode
+                });
+
+            });
+
+        }
+
+    });
+
+    let rng = Math.floor(Math.random() * pool.length);
+
+	if (elelegido) {
+		prehistoria.push(elelegido);
+	}
+
+    elelegido = pool[rng];
+
+    document.getElementById("nohombre").textContent =
+        elelegido.name;
+
+    document.getElementById("gay").textContent =
+        "modo: " + boymode[elelegido.mode];
+
+    document.getElementById("cajita").style.display = "block";
+
+}
+
+function des() {
+
+    if (prehistoria.length === 0) {
+        return;
+    }
+
+    elelegido = prehistoria.pop();
+
+    document.getElementById("nohombre").textContent =
+        elelegido.name;
+
+    document.getElementById("gay").textContent =
+        "mode: " + boymode[elelegido.mode];
+
+    document.getElementById("cajita").style.display = "block";
+
+}
+
+function openplis() {
+
+    if (elelegido) {
+
+        window.open(
+            asd + elelegido.id + "/" + elelegido.mode,
+            "_blank"
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
